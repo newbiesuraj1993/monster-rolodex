@@ -16,6 +16,7 @@ constructor(){
       <div className="App">
        <p>Hello From App Component</p>
        <p>{this.state.string}</p>
+       <button onClick = {() => this.setState({string : "Hello after click"})}>Change Button</button>
       </div>
     );
   }
