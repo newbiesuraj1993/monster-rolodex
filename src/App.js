@@ -1,22 +1,25 @@
 
 import { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Cardlist} from './components/card-list/card-list.component'
 
 class App extends Component {
 
 constructor(){
   super();
   this.state = {
-    string : "Hello from state"
+    monsters : [{name:'Frankenstein'},{name:'Drac'},{name:'Zombie'}]
   }
 }
+
+componentDidMount(){
+  fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json()).then(users => this.setState({monsters : users}))
+}
+
   render() {
     return (
       <div className="App">
-       <p>Hello From App Component</p>
-       <p>{this.state.string}</p>
-       <button onClick = {() => this.setState({string : "Hello after click"})}>Change Button</button>
+        <Cardlist monsters={this.state.monsters} />
       </div>
     );
   }
